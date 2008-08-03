@@ -1,0 +1,152 @@
+/* Default CSS for welcome page.  Delete this styling and replace it with your own. */
+
+/* @group for main */
+
+body {
+	position: absolute ;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 0;
+	margin: 0;
+	overflow: hidden ;
+}
+
+.workspace .sidebar {
+	position: absolute;
+	left:  0;
+	top:  0;
+	width: 200px;
+	bottom: 0;
+}
+
+.workspace .sidebar .master_list {
+	position: absolute;
+	left:  0;
+	top:  0;
+	right: 0;
+	bottom: 0;
+}
+
+.workspace .sc-split-divider-view {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  bottom: 0;
+}
+/* @end */
+
+/* @group for detail */
+.workspace {
+	background-color: white;
+}
+
+.workspace .detail_view {
+	position: absolute;	
+	left: 205px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border: none ;
+	margin: 10px;
+	background-color: white;
+}
+
+.workspace .detail_view .title_view{
+    font-weight: bold ;
+    font-size: 18px;
+	width: auto;
+}
+
+.workspace .detail_view .wiki_view{
+	width: auto;
+	height: 90%;
+    overflow:auto;
+}
+
+.workspace .detail_view .wiki_view h3{
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
+.workspace .detail_view .wiki_view ul{
+	margin: 3px;
+    padding-left: 10px;
+}
+
+.workspace .detail_view .wiki_view p{
+	margin: 0px;
+}
+
+.workspace .detail_view .wiki_view .code{
+	margin: 0px;
+    margin-left: 20px;
+	padding: 0px;
+    padding-left: 10px;
+    width: 90%;
+    border-left-width:  5px;
+    border-right-width: 5px;
+	border-left-style: solid;
+	border-right-style: solid;
+    border-color: #7F7F7F;
+    background: #CCE3FF;
+    overflow: auto;
+}
+.workspace .detail_view .wiki_view .code pre{
+	margin: 0px;
+	padding: 0px;
+}
+
+.wiki_table{
+    margin-left: 20px;
+	border-collapse: collapse;
+}
+.wiki_td{
+    border: 1px dotted #CCCCCC;
+}
+.wiki_tr{
+	background-color: #EAFDFF;
+}
+
+.workspace .detail_view .wiki_view .doclink{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.workspace .detail_view .right{
+	margin: 0px;
+    padding-right: 6px;
+    text-align: right;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+
+/* @end */
+
+/* @group for header */
+.left.app-label {
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.sc-theme .app-label .sc-label-view {
+    text-shadow: white 0px 1px 0px;
+    font-weight: bold ;
+    font-size: 15px;
+}
+
+.app-label img {
+    width: 27px;
+    height: 27px;
+    vertical-align: middle;
+    position: relative ;
+    top: -3px;
+    margin-right: 2px;
+}
+
+/* @end */

@@ -1,0 +1,94 @@
+<% content_for('body') do %>
+<% view :header, :class => 'sc-header sc-square-theme' do %>
+  <div class="left app-label" onClick = 'SN.appController.showAbout();'>
+    <img src="<%= static_url('images/sprouted-note-logo.gif') %>" />
+    <%= label_view :outlet => true, :tag => :span,:value =>'Sprouted Note' %>
+  </div>
+  <div class="center">
+    <%= label_view :outlet => true, :tag => :span,
+      :bind => {:value => 'SN.accountController.username'} %>
+  </div>
+  <div class="right">
+    <%= text_field_view :outlet => true, :hint => 'Search by RegEx',
+      :bind => { :value => 'SN.masterController.searchWord' } %>
+    <%= button_view :outlet => true, :title => 'Search', :default => true,
+      :action => 'SN.masterController.search' %>
+  </div>
+<% end %> <!-- header -->
+
+<% split_view :workspace, :class => 'sc-app-workspace header footer', :direction => :horizontal do %>  
+  <% view :sidebar, :outlet => true do %>
+    <% scroll_view :master_list, :outlet => true do %>
+      <%= list_view :outlet => true, 
+        :content_value_key  => 'title',
+        :content_value_editable => false,
+        :bind => {
+          :content => 'SN.masterController.arrangedObjects',
+          :selection => 'SN.masterController.selection'
+        } %>
+    <% end %>
+  <% end %> <!-- sidebar -->
+  
+  <%= split_divider_view :outlet => true, :width => 5 %>
+
+  <% view :detail_view, :outlet => true do %>
+    <%= label_view :title_view, :outlet => true, :hint => "Title",
+      :editable    => false, 
+      :formatter   => "SN.Note.Verify", 
+      :bind => {
+        :value => 'SN.detailController.title'
+     } %>
+
+    <div class="right">
+      <div>
+        <%= label_view :outlet => true, :tag => :span, :value =>'Created Date:' %>
+        <%= label_view :tag => :span,  :outlet => true, 
+          :formatter   => "SN.Note.Verify", 
+          :bind => {
+          :value => 'SN.detailController.created'
+        } %>
+      </div>
+      <div>
+        <%= label_view :outlet => true, :tag => :span, :value =>'Modified Date:' %>
+        <%= label_view :tag => :span,  :outlet => true, 
+          :formatter   => "SN.Note.Verify", 
+          :bind => {
+            :value => 'SN.detailController.modified'
+        } %>
+      </div>
+    </div>
+
+    <%= label_view :wiki_view, :outlet => true, :tag => :div,
+      :formatter   => "SN.Note.WikifiedHTML", 
+      :escape_html => false, 
+      :editable    => false, 
+      :hint        => "Wiki Document",
+      :bind => {
+        :value     => 'SN.detailController.text'
+      } %>
+  <% end %> <!-- detail_view -->
+
+<% end %> <!-- split_view -->
+
+<% view :footer, :class => 'sc-footer sc-square-theme' do %>
+  <div class="left">
+    <%= button_view :outlet => true, :label => '+', :action => 'SN.masterController.addNote' %>
+    <%= button_view :outlet => true, :label => '-', :action => 'SN.masterController.delNote' %>
+  </div>
+  <div class="center info-label">
+  </div>
+  <div class="right">
+    <%= button_view :edit_button, :outlet => true, :title => "Edit",
+      :action => 'SN.detailController.showEditor'
+       %>
+    <%= button_view :account_button, :outlet => true, :title => "Account",
+      :enabled => true,
+      :action => 'SN.accountController.showAccountDialog'
+       %>
+    <%= button_view :logout_button, :outlet => true, :title => "Logout",
+      :action => 'SN.accountController.logout'
+       %>
+  </div>
+<% end %> <!-- footer -->
+
+<% end %>

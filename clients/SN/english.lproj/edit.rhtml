@@ -1,0 +1,25 @@
+<% view :editor, :pane => :panel, :width => 600 do %>
+
+<table>
+  <tr><td>
+    <%= text_field_view :title, :outlet => true, :size => 80,
+                        :bind =>{:value => 'SN.detailController.title'}  
+    %>
+  </td></tr>
+
+  <tr><td>
+    <%= text_area_view :edit_body, :outlet => true, :cols => 70, :rows => 16,
+                       :bind =>{:value => 'SN.detailController.text'}  
+    %>
+  </td></tr>
+</table>
+
+<div class="buttons">
+  <%= button_view :outlet => true, :label => 'Cancel',
+                  :action => 'SN.detailController.cancelAndHideEditor'%>
+  <%= button_view :outlet => true, :label => 'Save Changes', 
+                  :action => 'SN.detailController.saveAndHideEditor',
+                  :bind => {:enabled => 'SN.detailController.hasChanges'} %>
+</div>
+
+<% end %>

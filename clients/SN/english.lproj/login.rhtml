@@ -1,0 +1,70 @@
+<% view :login_dialog, :pane => :dialog, 
+        :visible => true, 
+        :width => 300, 
+        :bind=>{:visible => 'SN.accountController.loginIsVisible'} do %>
+<h1>Login</h1>
+<hr>
+
+<table>
+<tr>
+  <td><label>Name:</label></td>
+  <td><%= text_field_view :username, 
+            :outlet => true, 
+            :hint => 'Your name', 
+            :bind => {:value => 'SN.accountController.username'}
+  %></td>
+</tr>
+<tr>
+  <td><label>Password:</label></td>
+  <td><%= password_field_view :password, 
+            :outlet => true, 
+            :hint => 'Your password',
+            :bind => {:value => 'SN.accountController.password'}
+  %></td>
+</tr>
+<tr>
+  <td>
+    <%= label_view :label => 'Confirm Password:',
+        :bind=>{:visible => 'SN.accountController.signupIsVisible'} %>
+  </td>
+  <td>
+    <%= password_field_view :confirm_pass, :outlet => true, :hint => 'Confirm password',
+        :bind=>{:visible => 'SN.accountController.signupIsVisible',
+                :value => 'SN.accountController.confirm_pass'} %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class='email'>
+    <%= text_field_view :email, :outlet => true  %>
+    <%= text_field_view :comment, :outlet => true %>
+    </div>
+  </td>
+</tr>
+</table>
+
+<div class="buttons">
+  <%= checkbox_view :outlet => true,
+    :label => "Signup",
+    :bind=>{:value => 'SN.accountController.signupIsVisible'}
+  %>
+  <%= button_view :outlet => true,
+    :title => "Login",    :width => 70,
+    :action => 'SN.accountController.login',
+    :bind=>{:visible => 'SN.accountController.loginButtonIsVisible',
+            :title   => 'SN.accountController.loginButtonTitle',
+            :enabled => 'SN.accountController.loginButtonEnabled',
+            :default => 'SN.accountController.loginButtonIsVisible'}
+  %>
+  <%= button_view :outlet => true,
+    :title => "Signup",    :width => 70,
+    :action => 'SN.accountController.signup',
+    :bind=>{:visible => 'SN.accountController.signupIsVisible',
+            :title   => 'SN.accountController.signupButtonTitle',
+            :enabled => 'SN.accountController.signupButtonEnabled',
+            :default => 'SN.accountController.signupIsVisible'}
+  %>
+</div>
+
+<% end %> <!-- login_dialog -->
+

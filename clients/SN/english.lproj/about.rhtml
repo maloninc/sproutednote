@@ -1,0 +1,16 @@
+<% view :about, :pane => :dialog, :width => 300, 
+    :bind=>{:visible => 'SN.appController.isAboutVisible'} do %>
+ 
+<h1>Sprouted Note</h1>
+version: 0.6
+<hr>
+
+<a href=http://www.maloninc.com/cgi-bin/fswiki/wiki.cgi?page=SproutedNote target=_blank>SproutedNote Wiki</a>
+<div> &copy;2008 <a href=mailto:hiroyuki@maloninc.com>Malon,Inc</a> All Rights Reserved. </div>
+
+<div class="buttons">
+  <%= button_view :outlet => true, :title => 'Close',
+    :bind=>{:default => 'SN.appController.isAboutVisible'},
+    :action => 'SN.appController.hideAbout' %>
+</div>
+<% end %>

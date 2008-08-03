@@ -1,0 +1,33 @@
+<% # ========================================================================
+   # Sn.Note Unit Test
+   # ========================================================================
+%>
+<% content_for('final') do %>
+
+<script>
+require('core');
+
+Test.context("SN.Note",{
+  setup: function()
+  {
+    this.note = SN.Note.create();
+  },
+
+  teardown: function()
+  {
+    delete this.note;
+  },
+
+  "Wikify": function() {
+    //true.shouldEqual(false) ;
+    this.note.set('text', 'hello');
+    this.note.wikifiedHTML().shouldEqual('<p>'+this.note.get('text')+'</p>');
+  }
+
+}) ;
+
+if (window.main && (appMain = main)) main = null ; 
+
+</script>
+
+<% end %>
