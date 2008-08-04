@@ -1,0 +1,41 @@
+<% view :account, :pane => :dialog, 
+        :visible => false, 
+        :width => 300 do %>
+<h1>Account</h1>
+<hr>
+
+<table>
+<tr>
+  <td><label>Change Password:</label></td>
+  <td><%= password_field_view :password, 
+            :outlet => true, 
+            :hint => 'New password',
+            :bind => {:value => 'SN.accountController.password'}
+  %></td>
+</tr>
+<tr>
+  <td>
+    <%= label_view :label => 'Confirm Password:' %>
+  </td>
+  <td>
+    <%= password_field_view :confirm_pass, :outlet => true, :hint => 'Confirm password',
+        :bind=>{ :value => 'SN.accountController.confirm_pass'} %>
+  </td>
+</tr>
+</table>
+
+<div class="buttons">
+  <%= button_view :outlet => true,
+    :title => "Cancel",    :width => 70,
+    :action => 'SN.accountController.cancelChange'
+  %>
+  <%= button_view :outlet => true,
+    :title => "Change",    :width => 70,
+    :action => 'SN.accountController.changeAccount',
+    :bind =>{:title => 'SN.accountController.changeAccountButtonTitle',
+             :enabled => 'SN.accountController.changeAccountButtonEnabled'}
+  %>
+</div>
+
+<% end %> <!-- account_dialog -->
+
