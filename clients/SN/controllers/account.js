@@ -30,6 +30,8 @@ SN.accountController = SC.Object.create(
   signupIsVisible: NO,
   signupButtonEnabled:YES,
   signupButtonTitle: 'Signup',
+  changeButtonEnables:YES,
+  changeButtonTitle: 'Change',
 
   login: function(){
     if(SN.FIXTURES.length != 0) { /* for TEST login */
@@ -90,11 +92,17 @@ SN.accountController = SC.Object.create(
     SC.Store.destroyRecords(records);
   },
 
-  signup: function(){
+  confirmPassword: function(){
     if(this.get('password') != this.get('confirm_pass')){
         alert('confirm password is incorrect!');
-        return;
+        return false;
     }
+    return true;
+  },
+
+  signup: function(){
+    if(!this.confirmPassword()) return;
+
     SN.server.request({url:     SN.serverURL,
                        params:  {username: this.get('username'),
                                  password: this.get('password'),
@@ -149,9 +157,58 @@ SN.accountController = SC.Object.create(
   }.property('username','uid','token'),
 
   showAccountDialog: function(){
-    alert('Not implemented');
+    SC.page.get('account').set('isVisible',YES);
+  },
+  
+  hideAccountDialog: function(){
+    SC.page.get('account').set('isVisible',NO);
   },
 
+  changeAccount: function(){
+    if(!this.confirmPassword()) return;
+    SN.server.request({url:     SN.serverURL,
+                       params:  {username: this.get('username'),
+                                 password: this.get('password'),
+                                 token:    this.get('token'),
+                                 uid:      this.get('uid')},
+                       method:  'sn_mod_user',
+                       success: this._changeAccountSuccess.bind(this),
+                       error:   this._changeAccountError.bind(this),
+                       fail:    this._changeAccountError.bind(this)
+                     });
+      this.set('changeAccountButtonEnabled', NO);
+      this.set('changeAccountButtonTitle', 'Loading...');
+  },
+  
+  _changeAccountSuccess: function(res){
+    this.hideAccountDialog();
+    this.set('changeAccountButtonEnabled', YES);
+    this.set('changeAccountButtonTitle', 'Change');
+  },
+
+  _changeAccountError: function(res){
+    this.set('changeAccountButtonEnabled', YES);
+    this.set('changeAccountButtonTitle', 'Change');
+     switch(res.msg){
+       case 'password length is zero':
+         alert('There is no password. Please type your password.');
+         break;
+
+       case 'name length is zero':
+         alert('There is no username.');
+         break;
+
+       case 'user not found':
+         alert('There is no user such as '+username);
+         break;
+
+       default: 
+         alert('[ERROR] ' + res.msg);
+     }
+  },
+  cancelChange: function(){
+    this.hideAccountDialog();
+  },
 
   loginObserver: function(){
     var isLogin = this.get("isLogin");
