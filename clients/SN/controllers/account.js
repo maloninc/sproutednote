@@ -97,6 +97,10 @@ SN.accountController = SC.Object.create(
         alert('confirm password is incorrect!');
         return false;
     }
+    if(this.get('username') == 'demo') {
+        alert("DEMO user can't change the password");
+        return false;
+    }
     return true;
   },
 
