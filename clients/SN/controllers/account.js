@@ -217,6 +217,11 @@ SN.accountController = SC.Object.create(
   loginObserver: function(){
     var isLogin = this.get("isLogin");
     this.set('loginIsVisible', !isLogin);
+    if(isLogin){
+      SC.page.get('header').get('searchWord').rootElement.select();
+    }else{
+      this.invokeLater(function(){SC.page.get('loginDialog').get('username').rootElement.select();}, 1000);
+    }
   }.observes("isLogin")
   ,
 

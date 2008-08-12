@@ -24,11 +24,15 @@ SN.detailController = SC.ObjectController.create(
   showEditor: function(sourceView, evt){
     SC.page.get('editor').popup(sourceView, evt) ;
     SN.masterController.set('searchButtonDefault', false);
+    SN.masterController.set('searchFieldEnabled', false);
+    SC.page.get('editor').get('title').rootElement.select();
   },
 
   hideEditor: function(sourceView, evt){
     SC.page.get('editor').set('isVisible',NO);
     SN.masterController.set('searchButtonDefault', true);
+    SN.masterController.set('searchFieldEnabled', true);
+    SC.page.get('header').get('searchWord').rootElement.select();
   },
 
   saveAndHideEditor: function(){

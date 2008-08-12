@@ -9,8 +9,9 @@
       :bind => {:value => 'SN.accountController.username'} %>
   </div>
   <div class="right">
-    <%= text_field_view :outlet => true, :hint => 'Search by RegEx',
-      :bind => { :value => 'SN.masterController.searchWord' } %>
+    <%= text_field_view :searchWord, :outlet => true, :hint => 'Search by RegEx',
+      :bind => { :value => 'SN.masterController.searchWord',
+                 :enabled => 'SN.masterController.searchFieldEnabled'} %>
     <%= button_view :outlet => true, :title => 'Search',
       :bind => {:default => 'SN.masterController.searchButtonDefault'},
       :action => 'SN.masterController.search' %>
