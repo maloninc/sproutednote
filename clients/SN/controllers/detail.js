@@ -23,10 +23,12 @@ SN.detailController = SC.ObjectController.create(
 
   showEditor: function(sourceView, evt){
     SC.page.get('editor').popup(sourceView, evt) ;
+    SN.masterController.set('searchButtonDefault', false);
   },
 
   hideEditor: function(sourceView, evt){
     SC.page.get('editor').set('isVisible',NO);
+    SN.masterController.set('searchButtonDefault', true);
   },
 
   saveAndHideEditor: function(){

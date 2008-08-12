@@ -11,7 +11,8 @@
   <div class="right">
     <%= text_field_view :outlet => true, :hint => 'Search by RegEx',
       :bind => { :value => 'SN.masterController.searchWord' } %>
-    <%= button_view :outlet => true, :title => 'Search', :default => true,
+    <%= button_view :outlet => true, :title => 'Search',
+      :bind => {:default => 'SN.masterController.searchButtonDefault'},
       :action => 'SN.masterController.search' %>
   </div>
 <% end %> <!-- header -->

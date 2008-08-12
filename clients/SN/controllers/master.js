@@ -25,6 +25,8 @@ SN.masterController = SC.CollectionController.create(
 
   searchWord: '',
 
+  searchButtonDefault: true,
+
   addNote: function(sender){
     var now = new Date();
     var content = this.get('content');
