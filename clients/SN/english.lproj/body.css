@@ -1,8 +1,12 @@
 /* Default CSS for welcome page.  Delete this styling and replace it with your own. */
 
-/* @group for main */
+/********************************
+ * Style for screen
+ ********************************/
 
-body {
+/* @group for main */
+@media screen {
+  body {
 	position: absolute ;
 	left: 0;
 	right: 0;
@@ -11,38 +15,38 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow: hidden ;
-}
+  }
 
-.workspace .sidebar {
+  .workspace .sidebar {
 	position: absolute;
 	left:  0;
 	top:  0;
 	width: 200px;
 	bottom: 0;
-}
+  }
 
-.workspace .sidebar .master_list {
+  .workspace .sidebar .master_list {
 	position: absolute;
 	left:  0;
 	top:  0;
 	right: 0;
 	bottom: 0;
-}
+  }
 
-.workspace .sc-split-divider-view {
-  position: absolute;
-  left: 200px;
-  top: 0;
-  bottom: 0;
-}
-/* @end */
+  .workspace .sc-split-divider-view {
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+  }
+  /* @end */
 
-/* @group for detail */
-.workspace {
+  /* @group for detail */
+  .workspace {
 	background-color: white;
-}
+  }
 
-.workspace .detail_view {
+  .workspace .detail_view {
 	position: absolute;	
 	left: 205px;
 	right: 0;
@@ -51,35 +55,35 @@ body {
 	border: none ;
 	margin: 10px;
 	background-color: white;
-}
+  }
 
-.workspace .detail_view .title_view{
+  .workspace .detail_view .title_view{
     font-weight: bold ;
     font-size: 18px;
 	width: auto;
-}
+  }
 
-.workspace .detail_view .wiki_view{
+  .workspace .detail_view .wiki_view{
 	width: auto;
 	height: 90%;
     overflow:auto;
-}
+  }
 
-.workspace .detail_view .wiki_view h3{
+  .workspace .detail_view .wiki_view h3{
 	border-bottom-width: 2px;
 	border-bottom-style: solid;
-}
+  }
 
-.workspace .detail_view .wiki_view ul{
+  .workspace .detail_view .wiki_view ul{
 	margin: 3px;
     padding-left: 10px;
-}
+  }
 
-.workspace .detail_view .wiki_view p{
+  .workspace .detail_view .wiki_view p{
 	margin: 0px;
-}
+  }
 
-.workspace .detail_view .wiki_view .code{
+  .workspace .detail_view .wiki_view .code{
 	margin: 0px;
     margin-left: 20px;
 	padding: 0px;
@@ -92,64 +96,175 @@ body {
     border-color: #7F7F7F;
     background: #CCE3FF;
     overflow: auto;
-}
-.workspace .detail_view .wiki_view .code pre{
+  }
+
+  .workspace .detail_view .wiki_view .code pre{
 	margin: 0px;
 	padding: 0px;
-}
+  }
 
-.wiki_table{
+  .wiki_table{
     margin-left: 20px;
 	border-collapse: collapse;
-}
-.wiki_td{
+  }
+  .wiki_td{
     border: 1px dotted #CCCCCC;
-}
-.wiki_tr{
+  }
+  .wiki_tr{
 	background-color: #EAFDFF;
-}
+  }
 
-.workspace .detail_view .wiki_view .doclink{
+  .workspace .detail_view .wiki_view .doclink{
     cursor: pointer;
     color: blue;
     text-decoration: underline;
     font-weight: bold;
-}
+  }
 
 
-.workspace .detail_view .right{
+  .workspace .detail_view .right{
 	margin: 0px;
     padding-right: 6px;
     text-align: right;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-}
+  }
 
+  /* @end */
 
-/* @end */
-
-/* @group for header */
-.left.app-label {
+  /* @group for header */
+  .left.app-label {
     padding-top: 5px;
     cursor: pointer;
-}
+  }
 
-.sc-theme .app-label .sc-label-view {
+  .sc-theme .app-label .sc-label-view {
     text-shadow: white 0px 1px 0px;
     font-weight: bold ;
     font-size: 15px;
-}
+  }
 
-.app-label img {
+  .app-label img {
     width: 27px;
     height: 27px;
     vertical-align: middle;
     position: relative ;
     top: -3px;
     margin-right: 2px;
+  }
+
+  .buttons{
+    margin-top: 15px;
+  }
 }
 
-.buttons{
-    margin-top: 15px;
+/********************************
+ * Style for print
+ ********************************/
+
+@media print{
+  body{
+    overflow:visible;
+	position: static;
+    background-color: white;
+  }
+
+  .sc-theme .sc-app-workspace {
+    overflow:visible;
+    background-color: white;
+    display: block;
+  }
+
+  .workspace .sidebar {
+    display: none;
+	left:  0;
+	top:  0;
+	width: 200px;
+	bottom: 0;
+  }
+
+  .workspace .detail_view .title_view{
+    font-weight: bold ;
+    font-size: 18px;
+	width: auto;
+  }
+
+  .workspace .detail_view .wiki_view{
+	width: auto;
+	height: 90%;
+  }
+
+  .workspace .detail_view .wiki_view h3{
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+  }
+
+  .workspace .detail_view .wiki_view ul{
+	margin: 3px;
+    padding-left: 10px;
+  }
+
+  .workspace .detail_view .wiki_view p{
+	margin: 0px;
+  }
+
+  .workspace .detail_view .wiki_view .code{
+	margin: 0px;
+    margin-left: 20px;
+	padding: 0px;
+    padding-left: 10px;
+    width: 90%;
+    border-left-width:  5px;
+    border-right-width: 5px;
+	border-left-style: solid;
+	border-right-style: solid;
+    border-color: #7F7F7F;
+    background: #CCE3FF;
+  }
+
+  .workspace .detail_view .wiki_view .code pre{
+	margin: 0px;
+	padding: 0px;
+  }
+
+  .wiki_table{
+    margin-left: 20px;
+	border-collapse: collapse;
+  }
+
+  .wiki_td{
+    border: 1px dotted #CCCCCC;
+  }
+  .wiki_tr{
+	background-color: #EAFDFF;
+  }
+
+  .workspace .detail_view .wiki_view .doclink{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+
+  .workspace .detail_view .right{
+	margin: 0px;
+    padding-right: 6px;
+    text-align: right;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+  }
+
+  .sc-theme .sc-header {
+    display: none;
+  }
+  .sc-theme .sc-footer{
+    display: none;
+  }
+  .sc-split-divider-view{
+    display: none;
+  }
+
 }
+
 /* @end */

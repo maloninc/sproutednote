@@ -74,21 +74,30 @@
 
 <% view :footer, :class => 'sc-footer sc-square-theme' do %>
   <div class="left">
-    <%= button_view :outlet => true, :label => '+', :action => 'SN.masterController.addNote' %>
-    <%= button_view :outlet => true, :label => '-', :action => 'SN.masterController.delNote' %>
+    <%= button_view :outlet => true, :label => '+', :title => 'Add memo', 
+        :action => 'SN.masterController.addNote' %>
+    <%= button_view :outlet => true, :label => '-', :title => 'Delete memo',
+        :action => 'SN.masterController.delNote' %>
   </div>
   <div class="center info-label">
   </div>
   <div class="right">
-    <%= button_view :edit_button, :outlet => true, :title => "Edit",
+    <%= button_view :edit_button, :outlet => true, :label => "Edit", 
+      :title => "Edit this memo",
       :action => 'SN.detailController.showEditor'
        %>
-    <%= button_view :account_button, :outlet => true, :title => "Account",
+    <%= button_view :account_button, :outlet => true, :label => "Account", 
+      :title => "Edit your account",
       :enabled => true,
       :action => 'SN.accountController.showAccountDialog'
        %>
-    <%= button_view :logout_button, :outlet => true, :title => "Logout",
+    <%= button_view :logout_button, :outlet => true, :label => "Logout",
+      :title => "Logout",
       :action => 'SN.accountController.logout'
+       %>
+    <%= button_view :about_button, :outlet => true, :label => "About",
+      :title => "About Sprouted Note",
+      :action => 'SN.appController.showAbout'
        %>
   </div>
 <% end %> <!-- footer -->
