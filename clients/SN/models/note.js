@@ -16,8 +16,6 @@ require('pjswlf');
 SN.Note= SC.Record.extend(
 /** @scope SN.Note.prototype */ {
 
-  dataSource: SN.server,
-
   properties:['title', 'text','created','modified','uid','docId','isPublic'],
 
   commitChanges: function(){
