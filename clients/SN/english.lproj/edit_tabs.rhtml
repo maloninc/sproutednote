@@ -1,0 +1,4 @@
+<% view :edit_tabs, :pane => :panel, :width => 600 do %>
+  <%= tab_view :tabs, :lazy_tabs => true, :now_showing => 'editor',
+      :segments => [[:editor,'Edit'], [:preview, 'Preview'], [:help,'Help']] %>
+<% end %>

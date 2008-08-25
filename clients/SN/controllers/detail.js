@@ -22,22 +22,30 @@ SN.detailController = SC.ObjectController.create(
   commitChangesImmediately: false,
 
   showEditor: function(sourceView, evt){
-    SC.page.get('editor').popup(sourceView, evt) ;
+    /* disconnect binding temporaryly to prevent from real time wiki rendaring */
+    var bindings = SC.page.get('workspace').get('detailView').get('wikiView').get('bindings');
+    bindings.invoke('disconnect');
+
+    SC.page.get('editTabs').popup(sourceView, evt) ;
     SN.masterController.set('searchButtonDefault', false);
     SN.masterController.set('searchFieldEnabled', false);
-    SC.page.get('editor').get('title').rootElement.select();
+    SC.page.get('editorTab').get('title').rootElement.select();
   },
 
   hideEditor: function(sourceView, evt){
-    SC.page.get('editor').set('isVisible',NO);
+    SC.page.get('editTabs').set('isVisible',NO);
     SN.masterController.set('searchButtonDefault', true);
     SN.masterController.set('searchFieldEnabled', true);
     SC.page.get('header').get('searchWord').rootElement.select();
+
+    /* connect binding again */
+    var bindings = SC.page.get('workspace').get('detailView').get('wikiView').get('bindings');
+    bindings.invoke('connect');
   },
 
   saveAndHideEditor: function(){
-    this.commitChanges();
     this.hideEditor();
+    this.commitChanges();
   },
 
   cancelAndHideEditor: function(){
