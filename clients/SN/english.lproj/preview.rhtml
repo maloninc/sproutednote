@@ -1,4 +1,19 @@
 <% view :preview_tab do %>
-<h1>Preview</h1>
+
+<table>
+  <tr><td>
+    <%= label_view :title_preview, :outlet => true, :tag => :div,
+      :bind =>{:value => 'SN.detailController.title'}  
+    %>
+  </td></tr>
+  <tr><td>
+    <%= label_view :wiki_preview, :class => 'wiki_view', :outlet => true, :tag => :div,
+      :formatter   => "SN.Note.WikifiedHTML", 
+      :escape_html => false, 
+      :editable    => false, 
+      :hint        => "Preview"
+    %>
+  </td></tr>
+</table>
 
 <% end %>

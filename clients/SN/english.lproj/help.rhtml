@@ -1,4 +1,104 @@
 <% view :help_tab do %>
-<h1>Help</h1>
+<div class="help wiki_view">
+
+  <div class="help_item">
+    <h3>Chapter 1</h3>
+    <div class="code">
+    *Chapter 1
+    </div>
+  </div>
+
+  <div class="help_item">
+    <h4>Sub Chapter 1-1</h4>
+    <div class="code">
+    **Sub Chapter 1
+    </div>
+  </div>
+
+
+  <div class="help_item">
+    <h5>Sub sub Chapter 1-1-1</h5>
+    <div class="code">
+    ***Sub sub Chapter 1
+    </div>
+  </div>
+
+
+  <div class="help_item">
+    <ul> <li>list item1</li></ul>
+    <ul> <li>list item2</li></ul>
+    <ul> <li><del>list item3 done</del></li></ul>
+    <ul> <li>list item4</li></ul>
+    <div class="code">
+    -list item1<br>
+    -list item2<br>
+    +list item3 done<br>
+    -list item4<br>
+    </div>
+  </div>
+
+
+  <div class="help_item">
+    <div class="doclink">link to another document</div>
+    <div class="code">
+    [[doc link]]
+    </div>
+  </div>
+
+
+  <div class="help_item">
+    <table class="wiki_table">
+    <tbody>
+    <tr class="wiki_tr">
+    <td class="wiki_td"> col1 </td>
+    <td class="wiki_td"> col2 </td>
+    <td class="wiki_td"> col3 </td>
+    </tr>
+    <tr class="wiki_tr">
+    <td class="wiki_td"> aaaaaaa </td>
+    <td class="wiki_td"> bbbb </td>
+    <td class="wiki_td"> cccccc </td>
+    </tr>
+    <tr class="wiki_tr">
+    <td class="wiki_td"> hello</td>
+    <td class="wiki_td"> new </td>
+    <td class="wiki_td"> world </td>
+    </tr>
+    </table>
+    <div class="code">
+    [table]<br>
+    col1 | col2 | col3<br>
+    aaaaaaa | bbbb | cccccc<br>
+    hello | new | world<br>
+    [/table]<br>
+    </div>
+  </div>
+  
+
+  <div class="help_item">
+    <div class="code">
+    var str1 = "hello";<br>
+    var str2 = "world";<br>
+    document.write(str1 + str2);<br>
+    </div>
+    <br>
+    <div class="code">
+    [code]<br>
+    var str1 = "hello";<br>
+    var str2 = "world";<br>
+    document.write(str1 + str2);<br>
+    [/code]<br>
+    </div>
+  </div>
+
+  <div class="help_item">
+    Horizontal Line
+    <hr>
+    <div class="code">
+    ----
+    </div>
+  </div>
+
+</div>
 
 <% end %>

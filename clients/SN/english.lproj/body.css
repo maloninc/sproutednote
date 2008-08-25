@@ -69,21 +69,21 @@
     overflow:auto;
   }
 
-  .workspace .detail_view .wiki_view h3{
+  .wiki_view h3{
 	border-bottom-width: 2px;
 	border-bottom-style: solid;
   }
 
-  .workspace .detail_view .wiki_view ul{
+  .wiki_view ul{
 	margin: 3px;
     padding-left: 10px;
   }
 
-  .workspace .detail_view .wiki_view p{
+  .wiki_view p{
 	margin: 0px;
   }
 
-  .workspace .detail_view .wiki_view .code{
+  .wiki_view .code{
 	margin: 0px;
     margin-left: 20px;
 	padding: 0px;
@@ -98,7 +98,7 @@
     overflow: auto;
   }
 
-  .workspace .detail_view .wiki_view .code pre{
+  .wiki_view .code pre{
 	margin: 0px;
 	padding: 0px;
   }
@@ -114,7 +114,7 @@
 	background-color: #EAFDFF;
   }
 
-  .workspace .detail_view .wiki_view .doclink{
+  .wiki_view .doclink{
     cursor: pointer;
     color: blue;
     text-decoration: underline;
@@ -228,6 +228,7 @@
   }
 
   .wiki_table{
+    margin: 10px;
     margin-left: 20px;
 	border-collapse: collapse;
   }
